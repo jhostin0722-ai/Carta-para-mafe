@@ -1,0 +1,439 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Georgia,serif;
+    color:#4a2435;
+    overflow-x:hidden;
+}
+
+
+.background{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:linear-gradient(135deg,#ffe5ee,#ffc8da,#f7a9c4);
+    z-index:-2;
+}
+
+
+#hearts-container{
+    position:fixed;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:10;
+}
+
+
+.heart{
+    position:absolute;
+    animation:floatHeart 8s linear infinite;
+}
+
+
+@keyframes floatHeart{
+
+    0%{
+        transform:translateY(100vh) scale(.5);
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-10vh) scale(1.4);
+        opacity:0;
+    }
+
+}
+
+
+/* SOBRE */
+
+.cover{
+
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+
+}
+
+
+.envelope{
+
+    width:320px;
+    height:220px;
+    background:#f8c5d8;
+    position:relative;
+    border-radius:10px;
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+
+.flap{
+
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#ee9fbd;
+    clip-path:polygon(0 0,100% 0,50% 55%);
+    transform-origin:top;
+    transition:1s;
+    z-index:2;
+
+}
+
+
+.envelope.open .flap{
+
+    transform:rotateX(180deg);
+
+}
+
+
+.letter-preview{
+
+    position:absolute;
+    background:white;
+    width:85%;
+    height:80%;
+    left:7.5%;
+    top:10%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    border-radius:5px;
+    color:#b64c75;
+    font-size:25px;
+
+}
+
+
+#openBtn{
+
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:#b64c75;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 10px 25px rgba(182,76,117,.35);
+
+}
+
+
+#openBtn:hover{
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* CARTA */
+
+
+.letter{
+
+    display:none;
+    padding:40px 20px;
+
+}
+
+
+.paper{
+
+    max-width:800px;
+    margin:auto;
+    padding:50px;
+    background:#fffaf5;
+    border-radius:20px;
+    box-shadow:0 20px 50px rgba(0,0,0,.15);
+    animation:showPaper 1.5s ease;
+    position:relative;
+    overflow:hidden;
+
+}
+
+
+.paper::before{
+
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle,rgba(255,255,255,.6),transparent);
+    animation:lightMove 8s infinite;
+
+}
+
+
+.paper>*{
+
+    position:relative;
+    z-index:2;
+
+}
+
+
+@keyframes lightMove{
+
+    from{
+        transform:translate(-20%,-20%);
+    }
+
+    to{
+        transform:translate(20%,20%);
+    }
+
+}
+
+
+@keyframes showPaper{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+
+.paper h1{
+
+    text-align:center;
+    color:#b64c75;
+    margin-bottom:35px;
+
+}
+
+
+.paper p{
+
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:25px;
+
+}
+
+
+
+/* TIMELINE */
+
+.timeline{
+
+    text-align:center;
+    margin-top:50px;
+
+}
+
+
+.timeline h2,
+.photo-gallery h2{
+
+    color:#b64c75;
+    margin-bottom:30px;
+
+}
+
+
+
+.moment{
+
+    background:#ffeef4;
+    padding:25px;
+    margin:25px auto;
+    border-radius:20px;
+    max-width:600px;
+    box-shadow:0 10px 25px rgba(0,0,0,.1);
+
+}
+
+
+.moment h3{
+
+    color:#c45b82;
+    margin-bottom:10px;
+
+}
+
+
+
+/* FOTOS */
+
+.photo-gallery{
+
+    text-align:center;
+    margin-top:60px;
+
+}
+
+
+.photos{
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+
+}
+
+
+.photo{
+
+    width:220px;
+    height:270px;
+    background:white;
+    padding:15px;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
+    transform:rotate(-3deg);
+    transition:.5s;
+
+}
+
+
+.photo:nth-child(2){
+
+    transform:rotate(4deg);
+
+}
+
+
+.photo:hover{
+
+    transform:scale(1.08) rotate(0);
+
+}
+
+
+.photo img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+}
+
+
+
+/* RECUERDO */
+
+.memory{
+
+    background:#ffeef4;
+    padding:25px;
+    border-left:5px solid #e98aaa;
+    margin-top:40px;
+
+}
+
+
+
+/* MUSICA */
+
+.music-box{
+
+    text-align:center;
+    margin:40px;
+
+}
+
+
+#musicBtn{
+
+    padding:12px 25px;
+    border:none;
+    border-radius:25px;
+    background:#e98aaa;
+    color:white;
+    cursor:pointer;
+
+}
+
+
+
+/* FINAL */
+
+.final{
+
+    text-align:center;
+    margin-top:60px;
+
+}
+
+
+.gift{
+
+    font-size:70px;
+    cursor:pointer;
+    animation:pulse 2s infinite;
+
+}
+
+
+@keyframes pulse{
+
+    50%{
+        transform:scale(1.15);
+    }
+
+}
+
+
+.surprise{
+
+    display:none;
+    padding:30px;
+    background:#fff0f5;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+
+}
+
+
+.secret{
+
+    font-style:italic;
+    opacity:.7;
+
+}
+
+
+
+@media(max-width:600px){
+
+    .envelope{
+        width:280px;
+        height:190px;
+    }
+
+
+    .paper{
+        padding:30px 20px;
+    }
+
+
+    .photos{
+        flex-direction:column;
+        align-items:center;
+    }
+
+}
